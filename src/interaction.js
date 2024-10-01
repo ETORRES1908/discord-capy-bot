@@ -1,4 +1,5 @@
 import { COMMANDS } from './const.js'
+import { searchGemini } from './services/gemini.js'
 export const interactionCallback = async (interaction) => {
   if (!interaction.isChatInputCommand()) return
 
@@ -19,5 +20,22 @@ export const interactionCallback = async (interaction) => {
     const bulkDel = Array.from(delMessages.values()).slice(0, amount)
     await interaction.channel.bulkDelete(bulkDel)
     await interaction.reply(`Deleted ${bulkDel.length} messages from ${user ? user.username : 'all'}!`)
+  }
+
+  if (interaction.commandName === COMMANDS.SEARCH) {
+    await interaction.deferReply()
+    const query = interaction.options.getString('query')
+    if (query === '') await interaction.reply('Please provide a search query')
+    let { searchResult } = await searchGemini({ query })
+    if (searchResult.length <= 2000) {
+      await interaction.editReply(searchResult)
+    }
+    while (searchResult.length > 2000) {
+      await interaction.editReply(searchResult.slice(0, 2000))
+      searchResult = searchResult.slice(2001, searchResult.length)
+      await interaction.followUp(searchResult)
+    }
+
+    // await interaction.reply(searchResult)
   }
 }
