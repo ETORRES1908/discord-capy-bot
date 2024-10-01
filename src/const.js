@@ -18,6 +18,7 @@ export const EMBED_TYPE = [
 
 ]
 
+// Todo: check new url
 export const COMMANDS = {
   PING: 'ping',
   PURGE: 'purge',
