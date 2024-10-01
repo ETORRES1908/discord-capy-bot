@@ -36,5 +36,6 @@ export const interactionCallback = async (interaction) => {
       await interaction.followUp(searchResult)
     }
     // await interaction.reply(searchResult)
+    // todo: debugger
   }
 }
