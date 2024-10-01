@@ -16,4 +16,5 @@ export const messageCallback = async (message) => {
   if (embedsUrls.length === 0) return
   message.suppressEmbeds(true)
   message.channel.send(embedsUrls.join('\n'))
+  // TODO: debug
 }
