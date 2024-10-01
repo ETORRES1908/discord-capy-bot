@@ -17,7 +17,7 @@ export const EMBED_TYPE = [
   }
 
 ]
-
+// TODO: COMMANDS
 export const COMMANDS = {
   PING: 'ping',
   PURGE: 'purge',
