@@ -35,7 +35,6 @@ export const interactionCallback = async (interaction) => {
       searchResult = searchResult.slice(2001, searchResult.length)
       await interaction.followUp(searchResult)
     }
-    // TODO: Add pagination
     // await interaction.reply(searchResult)
   }
 }
