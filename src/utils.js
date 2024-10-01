@@ -6,6 +6,8 @@ export function validateUrl (url) {
   } catch (error) {
     // todo: log error
     // console.log('error ->', error)
+    // console.log('url ->', url)
+    // console.log('validURL ->', validURL)
   }
   return validURL
 }
